@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseConfig } from './config/database.config';
 import { HealthModule } from './health/health.module';
-// import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -16,7 +16,7 @@ import { UserModule } from './user/user.module';
       useClass: DatabaseConfig,
     }),
     HealthModule,
-    // AuthModule,
+    AuthModule,
     UserModule,
   ],
 })
