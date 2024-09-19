@@ -3,10 +3,13 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { FindOptionsWhere, Repository } from 'typeorm';
+import { BaseEntity, BaseInterface } from '.';
 
 @Injectable()
-export abstract class BaseService<T> {
+export abstract class BaseService<T extends BaseEntity>
+  implements BaseInterface<T>
+{
   protected repository: Repository<T>;
 
   constructor(repository: Repository<T>) {
@@ -25,7 +28,9 @@ export abstract class BaseService<T> {
 
   async findOne(id: number): Promise<T> {
     try {
-      const entity = await this.repository.findOne({ where: { id } as any });
+      const entity = await this.repository.findOne({
+        where: { id } as FindOptionsWhere<T>,
+      });
       if (!entity)
         throw new NotFoundException(`Entity with ID ${id} not found`);
       return entity;

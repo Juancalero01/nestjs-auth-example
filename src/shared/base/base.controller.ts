@@ -8,10 +8,12 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { BaseService } from './base.service';
+import { BaseEntity, BaseInterface, BaseService } from '.';
 
 @Controller()
-export abstract class BaseController<T> {
+export abstract class BaseController<T extends BaseEntity>
+  implements BaseInterface<T>
+{
   constructor(private readonly baseService: BaseService<T>) {}
 
   @Get('/')
