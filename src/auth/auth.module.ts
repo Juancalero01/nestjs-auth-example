@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthController, AuthService, JwtStrategy } from '.';
-import { UserModule } from '../user';
-import { BcryptService } from '../utils';
+import { JwtStrategy } from './jwt.strategy';
+import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { UserModule } from '../user/user.module';
+import { BcryptService } from '../utils/bcrypt.service';
 
 @Module({
   imports: [

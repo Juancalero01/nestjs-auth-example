@@ -4,7 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { FindOptionsWhere, Repository } from 'typeorm';
-import { BaseEntity, BaseInterface } from '.';
+import { BaseInterface } from './base.interface';
+import { BaseEntity } from './base.entity';
 
 @Injectable()
 export abstract class BaseService<T extends BaseEntity>

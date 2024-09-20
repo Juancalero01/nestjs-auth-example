@@ -8,7 +8,9 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { BaseEntity, BaseInterface, BaseService } from '.';
+import { BaseService } from './base.service';
+import { BaseInterface } from './base.interface';
+import { BaseEntity } from './base.entity';
 
 @Controller()
 export abstract class BaseController<T extends BaseEntity>
