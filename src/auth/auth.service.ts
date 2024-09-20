@@ -27,10 +27,9 @@ export class AuthService {
   }
 
   async signIn(user: any): Promise<{ access_token: string }> {
-    const isUserValid = await this.validateUser(user.username, user.password);
-
-    if (isUserValid) {
-      const payload = { username: user.username, sub: user.id };
+    const userValid = await this.validateUser(user.username, user.password);
+    if (userValid) {
+      const payload = { username: userValid.username, sub: userValid.id };
       return {
         access_token: this.jwtService.sign(payload),
       };

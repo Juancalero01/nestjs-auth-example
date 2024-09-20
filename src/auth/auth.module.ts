@@ -3,6 +3,7 @@ import { AuthController, AuthService, JwtStrategy } from '.';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from 'src/user/user.module';
+import { BcryptService } from 'src/utils/bcrypt.service';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { UserModule } from 'src/user/user.module';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, BcryptService],
 })
 export class AuthModule {}

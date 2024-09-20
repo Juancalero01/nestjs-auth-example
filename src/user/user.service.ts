@@ -20,6 +20,11 @@ export class UserService extends BaseService<UserEntity> {
   async findOneByUsername(username: string): Promise<UserEntity> {
     try {
       const user = await this.userRepository.findOne({
+        select: {
+          id: true,
+          username: true,
+          password: true,
+        },
         where: {
           username,
         },
