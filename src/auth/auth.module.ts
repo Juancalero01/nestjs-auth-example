@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AuthController, AuthService, JwtStrategy } from '.';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { UserModule } from 'src/user/user.module';
-import { BcryptService } from 'src/utils/bcrypt.service';
+import { AuthController, AuthService, JwtStrategy } from '.';
+import { UserModule } from '../user';
+import { BcryptService } from '../utils';
 
 @Module({
   imports: [
