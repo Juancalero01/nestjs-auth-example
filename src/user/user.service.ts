@@ -3,10 +3,10 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { BaseService } from 'src/shared/base/base.service';
-import { UserEntity } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { BaseService } from '../shared/base';
+import { UserEntity } from '.';
 
 @Injectable()
 export class UserService extends BaseService<UserEntity> {
