@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { BaseController } from '../shared/base/base.controller';
-import { RoleEntity } from './role.entity';
 import { RoleService } from './role.service';
+import { RoleEntity } from './role.entity';
 
 @Controller('role')
 export class RoleController extends BaseController<RoleEntity> {

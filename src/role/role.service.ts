@@ -4,8 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BaseService } from 'src/shared/base/base.service';
 import { Repository } from 'typeorm';
+import { BaseService } from '../shared/base/base.service';
 import { RoleEntity } from './role.entity';
 
 @Injectable()
