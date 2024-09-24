@@ -22,12 +22,8 @@ export class AbilityFactory {
         const subject = permission.subject.name;
         const isAllowed = permission.isAllowed;
 
-        if (action && subject) {
-          if (isAllowed) {
-            can(action, subject);
-          } else {
-            cannot(action, subject);
-          }
+        if (action && subject && isAllowed) {
+          can(action, subject);
         }
       });
     }
