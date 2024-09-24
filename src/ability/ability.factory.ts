@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { AbilityBuilder, AbilityClass, Ability } from '@casl/ability';
 import { RoleService } from 'src/role/role.service';
-
-export type AppAbility = Ability<[string, string]>;
+import { AppAbility } from './ability.type';
 
 @Injectable()
-export class CaslAbilityFactory {
+export class AbilityFactory {
   constructor(private roleService: RoleService) {}
 
   async createForUser(user: any) {
