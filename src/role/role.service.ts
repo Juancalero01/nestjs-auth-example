@@ -20,19 +20,23 @@ export class RoleService extends BaseService<RoleEntity> {
   async findOneByUser(userId: number): Promise<RoleEntity> {
     try {
       const role = await this.roleRepository.findOne({
+        relations: ['permissions', 'permissions.action', 'permissions.subject'],
         select: {
           id: true,
           name: true,
           permissions: {
+            id: true,
             action: {
+              id: true,
               name: true,
             },
             subject: {
+              id: true,
               name: true,
             },
           },
         },
-        relations: ['permissions', 'permissions.action', 'permissions.subject'],
+
         where: {
           users: {
             id: userId,
