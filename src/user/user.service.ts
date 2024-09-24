@@ -25,7 +25,7 @@ export class UserService extends BaseService<UserEntity> {
       const user = await this.userRepository.findOne({
         select: {
           id: true,
-          username: true,
+          fullname: true,
           password: true,
         },
         where: {
