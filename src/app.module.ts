@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { DatabaseConfig } from './config/database.config';
+import { HttpExceptionFilter } from './utils/filters/http-exception.filter';
 import { JwtAuthGuard } from './auth/jwt.guard';
 import { PoliciesGuard } from './policy/policies.guard';
 import { HealthModule } from './health/health.module';
@@ -31,6 +32,10 @@ import { AbilityModule } from './ability/ability.module';
   ],
   providers: [
     JwtService,
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
