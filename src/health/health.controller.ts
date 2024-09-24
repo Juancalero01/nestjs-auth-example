@@ -1,11 +1,10 @@
-import { Controller, Get, HttpCode } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { Public } from '../utils/decorators/public.decorator';
 
 @Controller('health')
 export class HealthController {
-  constructor() {}
-
-  @Get()
-  @HttpCode(200)
+  @Public()
+  @Get('/')
   run() {
     return { status: 'ok' };
   }

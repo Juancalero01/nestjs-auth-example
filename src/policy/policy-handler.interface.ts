@@ -1,4 +1,4 @@
-import { AppAbility } from '../ability/ability.factory';
+import { AppAbility } from '../ability/ability.type';
 
 interface IPolicyHandler {
   handle(ability: AppAbility): boolean;
