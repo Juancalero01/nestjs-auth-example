@@ -5,7 +5,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UserModule } from '../user/user.module';
-import { BcryptService } from '../utils/bcrypt.service';
+import { BcryptService } from '../utils/services/bcrypt.service';
 
 @Module({
   imports: [
@@ -15,7 +15,7 @@ import { BcryptService } from '../utils/bcrypt.service';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET_KEY'),
-        signOptions: { expiresIn: '60s' },
+        signOptions: { expiresIn: '1d' },
       }),
       inject: [ConfigService],
     }),
