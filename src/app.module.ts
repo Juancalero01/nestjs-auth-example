@@ -5,7 +5,7 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import { DatabaseConfig } from './config/database.config';
 import { HttpExceptionFilter } from './utils/filters/http-exception.filter';
-import { JwtAuthGuard } from './auth/jwt.guard';
+import { JwtAuthGuard } from './auth/jwt/jwt.guard';
 import { PoliciesGuard } from './policy/policies.guard';
 import { HealthModule } from './health/health.module';
 import { AuthModule } from './auth/auth.module';
