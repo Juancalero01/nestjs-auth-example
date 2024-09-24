@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import {
   HealthCheck,
+  HealthCheckResult,
   HealthCheckService,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
@@ -16,7 +17,7 @@ export class HealthController {
   @Public()
   @Get('/')
   @HealthCheck()
-  readiness() {
+  async readiness(): Promise<HealthCheckResult> {
     return this.health.check([
       async () => this.db.pingCheck('database', { timeout: 300 }),
     ]);
