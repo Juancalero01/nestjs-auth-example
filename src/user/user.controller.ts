@@ -17,7 +17,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/')
-  @CheckPolicies((ability: AppAbility) => ability.can('read', 'User'))
+  @CheckPolicies((ability: AppAbility) => ability.can('read', 'user'))
   async findAll(): Promise<any[]> {
     try {
       return await this.userService.findAll();
@@ -30,7 +30,7 @@ export class UserController {
   }
 
   @Get('/:id')
-  @CheckPolicies((ability: AppAbility) => ability.can('read', 'User'))
+  @CheckPolicies((ability: AppAbility) => ability.can('read', 'user'))
   async findOne(@Param('id') id: number): Promise<any> {
     try {
       const entity = await this.userService.findOne(id);
@@ -50,7 +50,7 @@ export class UserController {
   }
 
   @Post('/')
-  @CheckPolicies((ability: AppAbility) => ability.can('create', 'User'))
+  @CheckPolicies((ability: AppAbility) => ability.can('create', 'user'))
   async create(@Body() entity: any): Promise<any> {
     try {
       return await this.userService.create(entity);
@@ -63,7 +63,7 @@ export class UserController {
   }
 
   @Put('/:id')
-  @CheckPolicies((ability: AppAbility) => ability.can('update', 'User'))
+  @CheckPolicies((ability: AppAbility) => ability.can('update', 'user'))
   async update(@Param('id') id: number, @Body() entity: any): Promise<any> {
     try {
       const existingEntity = await this.userService.findOne(id);

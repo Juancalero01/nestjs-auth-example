@@ -17,7 +17,7 @@ export class RoleController {
   constructor(private readonly roleService: RoleService) {}
 
   @Get('/')
-  @CheckPolicies((ability: AppAbility) => ability.can('read', 'Role'))
+  @CheckPolicies((ability: AppAbility) => ability.can('read', 'role'))
   async findAll(): Promise<any[]> {
     try {
       return await this.roleService.findAll();
@@ -30,7 +30,7 @@ export class RoleController {
   }
 
   @Get('/:id')
-  @CheckPolicies((ability: AppAbility) => ability.can('read', 'Role'))
+  @CheckPolicies((ability: AppAbility) => ability.can('read', 'role'))
   async findOne(@Param('id') id: number): Promise<any> {
     try {
       const entity = await this.roleService.findOne(id);
@@ -50,7 +50,7 @@ export class RoleController {
   }
 
   @Post('/')
-  @CheckPolicies((ability: AppAbility) => ability.can('create', 'Role'))
+  @CheckPolicies((ability: AppAbility) => ability.can('create', 'role'))
   async create(@Body() entity: any): Promise<any> {
     try {
       return await this.roleService.create(entity);
@@ -63,7 +63,7 @@ export class RoleController {
   }
 
   @Put('/:id')
-  @CheckPolicies((ability: AppAbility) => ability.can('update', 'Role'))
+  @CheckPolicies((ability: AppAbility) => ability.can('update', 'role'))
   async update(@Param('id') id: number, @Body() entity: any): Promise<any> {
     try {
       const existingEntity = await this.roleService.findOne(id);
