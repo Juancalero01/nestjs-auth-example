@@ -1,3 +1,3 @@
-import { Ability } from '@casl/ability';
+import { PureAbility } from '@casl/ability';
 
-export type AppAbility = Ability<[string, string]>;
+export type AppAbility = PureAbility<[string, string]>;

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AbilityBuilder, AbilityClass, Ability } from '@casl/ability';
+import { AbilityBuilder, AbilityClass, PureAbility } from '@casl/ability';
 import { RoleService } from 'src/role/role.service';
 import { AppAbility } from './ability.type';
 
@@ -9,7 +9,7 @@ export class AbilityFactory {
 
   async createForUser(user: any) {
     const { can, build } = new AbilityBuilder(
-      Ability as AbilityClass<AppAbility>,
+      PureAbility as AbilityClass<AppAbility>,
     );
 
     const role = await this.roleService.findOneByUser(user.sub);
