@@ -8,7 +8,7 @@ export class AbilityFactory {
   constructor(private roleService: RoleService) {}
 
   async createForUser(user: any) {
-    const { can, cannot, build } = new AbilityBuilder(
+    const { can, build } = new AbilityBuilder(
       Ability as AbilityClass<AppAbility>,
     );
 
