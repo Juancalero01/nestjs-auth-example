@@ -34,9 +34,9 @@ export class RoleService extends BaseService<RoleEntity> {
               id: true,
               name: true,
             },
+            isAllowed: true,
           },
         },
-
         where: {
           users: {
             id: userId,
