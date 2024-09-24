@@ -9,7 +9,6 @@ export class BcryptService {
   }
 
   async compare(data: string, encrypted: string): Promise<boolean> {
-    console.log('Compare args:', data, encrypted);
     return compareSync(data, encrypted);
   }
 }
