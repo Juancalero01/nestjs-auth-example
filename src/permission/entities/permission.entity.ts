@@ -1,4 +1,4 @@
-import { Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../../shared/base/base.entity';
 import { RoleEntity } from '../../role/role.entity';
 import { ActionEntity } from './action.entity';
@@ -14,4 +14,7 @@ export class PermissionEntity extends BaseEntity {
 
   @ManyToOne(() => SubjectEntity, (subject) => subject.permissions)
   subject: SubjectEntity;
+
+  @Column({ type: 'boolean', nullable: false, default: false })
+  isAllowed: boolean;
 }

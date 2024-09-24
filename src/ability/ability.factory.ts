@@ -14,15 +14,20 @@ export class AbilityFactory {
 
     const role = await this.roleService.findOneByUser(user.sub);
 
-    if (role.name === 'admin') {
+    if (role.name === 'superadmin') {
       can('manage', 'all');
     } else {
       role.permissions.forEach((permission) => {
         const action = permission.action.name;
         const subject = permission.subject.name;
+        const isAllowed = permission.isAllowed;
 
         if (action && subject) {
-          can(action, subject);
+          if (isAllowed) {
+            can(action, subject);
+          } else {
+            cannot(action, subject);
+          }
         }
       });
     }
